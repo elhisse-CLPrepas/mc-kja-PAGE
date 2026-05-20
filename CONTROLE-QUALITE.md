@@ -15,6 +15,8 @@ Date: 19 mai 2026
 - Section panorama ajoutee dans `index.html` avec 19 affiches integrees.
 - Affiches MC-KJA et affiches QR copiees dans `assets/img/panorama/`.
 - Defilement horizontal type film ajoute avec boutons precedent/suivant, compteur et barre de progression.
+- Affichage optimise: une seule affiche visible par cadre dans le panorama.
+- Section QR optimisee en carrousel limite: une seule affiche QR visible par cadre avec compteur et progression.
 - Mention responsable presente dans le footer.
 
 ## Assets panorama presents

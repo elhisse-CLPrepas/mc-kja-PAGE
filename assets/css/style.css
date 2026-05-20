@@ -435,6 +435,8 @@ main > section:not(.hero) {
 .cinema-frame {
   position: relative;
   overflow: hidden;
+  width: min(100%, 620px);
+  margin: 0 auto;
   padding: 22px 0 26px;
   border-block: 10px solid rgba(0, 0, 0, 0.42);
 }
@@ -461,14 +463,19 @@ main > section:not(.hero) {
 
 .film-track {
   display: grid;
-  grid-auto-columns: clamp(240px, 28vw, 360px);
+  grid-auto-columns: 100%;
   grid-auto-flow: column;
   gap: 18px;
   overflow-x: auto;
-  padding: 8px max(18px, calc((100vw - 1160px) / 2)) 18px 0;
+  padding: 8px 0 18px;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-color: var(--gold) rgba(255, 255, 255, 0.18);
+}
+
+.film-track::-webkit-scrollbar,
+.qr-grid::-webkit-scrollbar {
+  height: 0;
 }
 
 .film-track:focus-visible {
@@ -494,6 +501,7 @@ main > section:not(.hero) {
   object-fit: contain;
   background: #fff;
   border-radius: 6px;
+  max-height: min(72vh, 760px);
 }
 
 .film-slide figcaption {
@@ -619,8 +627,22 @@ main > section:not(.hero) {
 }
 
 .qr-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: none;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
   align-items: stretch;
+  width: min(100%, 620px);
+  margin: 0 auto;
+  overflow-x: auto;
+  padding: 4px 0 18px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--gold) rgba(33, 78, 54, 0.18);
+}
+
+.qr-grid:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 6px;
 }
 
 .qr-card {
@@ -638,6 +660,7 @@ main > section:not(.hero) {
   border-radius: 28px;
   box-shadow: 0 24px 55px rgba(33, 78, 54, 0.12);
   isolation: isolate;
+  scroll-snap-align: start;
 }
 
 .qr-card::before {
@@ -760,6 +783,28 @@ main > section:not(.hero) {
   background: linear-gradient(160deg, rgba(198, 163, 91, 0.2), rgba(255, 253, 244, 0.78));
 }
 
+.qr-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: min(100%, 620px);
+  margin: 0 auto 18px;
+}
+
+.qr-carousel-controls span {
+  min-width: 64px;
+  color: var(--deep);
+  font-weight: 900;
+  text-align: center;
+}
+
+.qr-progress {
+  width: min(100%, 620px);
+  margin: 0 auto;
+  background: rgba(33, 78, 54, 0.12);
+}
+
 .contact {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
@@ -861,7 +906,6 @@ main > section:not(.hero) {
 
   .offer-grid,
   .formation-layout,
-  .qr-grid,
   .contact-box {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -880,7 +924,6 @@ main > section:not(.hero) {
   .hero-actions .btn,
   .offer-grid,
   .formation-layout,
-  .qr-grid,
   .contact-box {
     width: 100%;
     grid-template-columns: 1fr;
@@ -897,7 +940,6 @@ main > section:not(.hero) {
   }
 
   .film-track {
-    grid-auto-columns: minmax(236px, 82vw);
     padding-right: 0;
   }
 
