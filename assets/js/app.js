@@ -2,6 +2,11 @@ const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const backToTop = document.querySelector("[data-back-to-top]");
 const revealItems = document.querySelectorAll(".section-reveal");
+const panoramaTrack = document.querySelector("[data-panorama-track]");
+const panoramaPrev = document.querySelector("[data-panorama-prev]");
+const panoramaNext = document.querySelector("[data-panorama-next]");
+const panoramaCount = document.querySelector("[data-panorama-count]");
+const panoramaProgress = document.querySelector("[data-panorama-progress]");
 
 if (nav && navToggle) {
   navToggle.addEventListener("click", () => {
@@ -41,6 +46,49 @@ const observer = new IntersectionObserver(
 
 for (const item of revealItems) {
   observer.observe(item);
+}
+
+if (panoramaTrack) {
+  const slides = Array.from(panoramaTrack.querySelectorAll(".film-slide"));
+
+  const updatePanorama = () => {
+    const maxScroll = panoramaTrack.scrollWidth - panoramaTrack.clientWidth;
+    const progress = maxScroll > 0 ? panoramaTrack.scrollLeft / maxScroll : 0;
+    const activeIndex = slides.reduce(
+      (closest, slide, index) => {
+        const distance = Math.abs(slide.offsetLeft - panoramaTrack.scrollLeft);
+        return distance < closest.distance ? { index, distance } : closest;
+      },
+      { index: 0, distance: Number.POSITIVE_INFINITY }
+    ).index;
+
+    if (panoramaCount) {
+      panoramaCount.textContent = `${activeIndex + 1} / ${slides.length}`;
+    }
+
+    if (panoramaProgress) {
+      panoramaProgress.style.width = `${Math.max(5, progress * 100)}%`;
+    }
+  };
+
+  const movePanorama = (direction) => {
+    const firstSlide = slides[0];
+    const step = firstSlide ? firstSlide.getBoundingClientRect().width + 18 : panoramaTrack.clientWidth * 0.8;
+    panoramaTrack.scrollBy({ left: step * direction, behavior: "smooth" });
+  };
+
+  panoramaTrack.addEventListener("scroll", updatePanorama, { passive: true });
+  window.addEventListener("resize", updatePanorama);
+
+  if (panoramaPrev) {
+    panoramaPrev.addEventListener("click", () => movePanorama(-1));
+  }
+
+  if (panoramaNext) {
+    panoramaNext.addEventListener("click", () => movePanorama(1));
+  }
+
+  updatePanorama();
 }
 
 for (const card of document.querySelectorAll(".qr-card")) {

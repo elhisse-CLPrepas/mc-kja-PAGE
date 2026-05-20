@@ -12,7 +12,32 @@ Date: 19 mai 2026
 - Les references locales dans `index.html` pointent vers des fichiers existants.
 - Toutes les balises image controlees ont un attribut `alt`.
 - Section QR transformee en affiches reseaux sociaux avec QR central, titre, texte, lien visible, bouton et copie rapide.
+- Section panorama ajoutee dans `index.html` avec 19 affiches integrees.
+- Affiches MC-KJA et affiches QR copiees dans `assets/img/panorama/`.
+- Defilement horizontal type film ajoute avec boutons precedent/suivant, compteur et barre de progression.
 - Mention responsable presente dans le footer.
+
+## Assets panorama presents
+
+- `affiche-1.0-MC-KJA.png`
+- `affiche-1.1-MC-KJA.png`
+- `affiche-2.1-MC-KJA.png`
+- `affiche-3.1-MC-KJA.png`
+- `affiche-4.1-MC-KJA.png`
+- `affiche-5.1-MC-KJA.png`
+- `affiche-6.1-MC-KJA.png`
+- `affiche-7.1-MC-KJA.png`
+- `affiche-8.1-MC-KJA.png`
+- `affiche-9.1-MC-KJA.png`
+- `affiche-qr-site-khadija.png`
+- `affiche-qr-nc-academy.png`
+- `affiche-qr-whatsapp.png`
+- `affiche-qr-email.png`
+- `affiche-qr-youtube.png`
+- `affiche-qr-instagram.png`
+- `affiche-qr-facebook.png`
+- `affiche-qr-linkedin.png`
+- `affiche-qr-tiktok.png`
 
 ## Assets QR presents
 
@@ -43,4 +68,3 @@ Date: 19 mai 2026
 5. Tester les boutons `Ouvrir le lien`.
 6. Tester les boutons `Copier le lien`.
 7. Verifier le bouton retour en haut.
-

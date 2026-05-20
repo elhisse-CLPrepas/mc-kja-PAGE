@@ -378,6 +378,171 @@ main > section:not(.hero) {
   font-size: 1.12rem;
 }
 
+.panorama {
+  width: 100%;
+  max-width: none;
+  padding-inline: max(18px, calc((100% - 1160px) / 2));
+  background:
+    linear-gradient(180deg, rgba(25, 51, 40, 0.96), rgba(40, 17, 102, 0.94)),
+    var(--deep);
+}
+
+.panorama .eyebrow,
+.panorama h2,
+.panorama .section-intro {
+  color: #fff;
+}
+
+.panorama-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.panorama-heading > div:first-child {
+  max-width: 800px;
+}
+
+.panorama-controls {
+  display: flex;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.panorama-btn {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  color: var(--deep);
+  background: var(--ivory);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.panorama-btn:hover,
+.panorama-btn:focus-visible {
+  background: var(--gold);
+}
+
+.cinema-frame {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 0 26px;
+  border-block: 10px solid rgba(0, 0, 0, 0.42);
+}
+
+.cinema-frame::before,
+.cinema-frame::after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  height: 10px;
+  content: "";
+  background-image: repeating-linear-gradient(90deg, rgba(255, 253, 244, 0.72) 0 18px, transparent 18px 34px);
+  pointer-events: none;
+}
+
+.cinema-frame::before {
+  top: 4px;
+}
+
+.cinema-frame::after {
+  bottom: 4px;
+}
+
+.film-track {
+  display: grid;
+  grid-auto-columns: clamp(240px, 28vw, 360px);
+  grid-auto-flow: column;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 8px max(18px, calc((100vw - 1160px) / 2)) 18px 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--gold) rgba(255, 255, 255, 0.18);
+}
+
+.film-track:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 6px;
+}
+
+.film-slide {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  background: rgba(255, 253, 244, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 8px;
+  box-shadow: 0 26px 58px rgba(0, 0, 0, 0.28);
+  scroll-snap-align: start;
+}
+
+.film-slide img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.film-slide figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 46px;
+  padding: 12px 4px 2px;
+  color: var(--deep);
+  font-weight: 900;
+}
+
+.film-slide figcaption span {
+  color: var(--violet-light);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
+.qr-film img {
+  aspect-ratio: 1 / 1.25;
+}
+
+.panorama-status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+  color: #fff;
+  font-weight: 900;
+}
+
+.panorama-progress {
+  flex: 1;
+  height: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+
+.panorama-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--natural), var(--gold));
+  border-radius: inherit;
+  transition: width 160ms ease;
+}
+
 .offer-grid {
   grid-template-columns: repeat(4, 1fr);
 }
@@ -689,6 +854,11 @@ main > section:not(.hero) {
     min-height: auto;
   }
 
+  .panorama-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
   .offer-grid,
   .formation-layout,
   .qr-grid,
@@ -719,5 +889,20 @@ main > section:not(.hero) {
   .hero-badge {
     width: 92px;
     height: 92px;
+  }
+
+  .panorama-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .film-track {
+    grid-auto-columns: minmax(236px, 82vw);
+    padding-right: 0;
+  }
+
+  .panorama-status {
+    align-items: stretch;
+    flex-direction: column;
   }
 }
